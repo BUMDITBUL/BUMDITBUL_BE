@@ -1,6 +1,6 @@
 spring:
   application:
-    name: BUMDITBUL_SERVER
+    name: bankramen-server
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -15,9 +15,9 @@ spring:
 
   jpa:
     database: mysql
-    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
+      dialect: org.hibernate.dialect.MySQLDialect
     properties:
       hibernate:
         format_sql: true
@@ -27,7 +27,6 @@ spring:
     allow-bean-definition-overriding: true
 
   jackson:
-    property-naming-strategy: SNAKE_CASE
     serialization:
       fail-on-empty-beans: false
 
@@ -36,3 +35,19 @@ jwt:
   header: ${HEADER}
   prefix: ${PREFIX}
   accessExp: ${ACCESS_EXP}
+
+springdoc:
+  api-docs:
+    path: ${API_DOCS_PATH}
+
+  swagger-ui:
+    path: ${SWAGGER_UI_PATH}
+    operations-sorter: method # method(HTTP METHOD 순 정렬), alpha(알파벳 순 정렬)
+    tags-sorter: alpha # method(HTTP METHOD 순 정렬), alpha(알파벳 순 정렬)
+    display-request-duration: true
+    try-it-out-enabled: true
+    doc-expansion: none # none(전부 접힘), list(목록만 펼침), full(전부 펼침)
+    persist-authorization: true
+
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
